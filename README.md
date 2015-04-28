@@ -8,6 +8,7 @@ To configure the app copy the sample configuration file and replace `gomofotoSer
 
   ```shell
   cp src/configuration.sample.js src/configuration.js
+  ```
 
 ## Running The App
 
