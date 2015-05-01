@@ -6,7 +6,11 @@ LogManager.setLevel(LogManager.levels.debug);
 
 export function configure(aurelia) {
    aurelia.use
-    .standardConfiguration()
+      //.standardConfiguration()
+      .defaultBindingLanguage()
+      .defaultResources()
+      .router()
+      .eventAggregator()
     .developmentLogging()
     .plugin('aurelia-breeze');
 

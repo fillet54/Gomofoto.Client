@@ -1,9 +1,17 @@
 <template>
-  <require from='./nav-bar'></require>
+   <require from='./nav-bar'></require>
 
-  <nav-bar router.bind="router"></nav-bar>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
 
-  <div class="page-host">
-    <router-view></router-view>
-  </div>
+            <nav-bar usernav.bind="usernav" router.bind="router" ></nav-bar>
+         </div>
+      </div>
+
+
+      <div class="col-md-12 page-host">
+         <router-view></router-view>
+      </div>
+   </div>
 </template>
