@@ -17,7 +17,7 @@ export class UserNav {
    }
 
    get displayName() {
-      return this.session.user.Name;
+      return this.session.user.FirstName;
    }
 
    get fullName() {

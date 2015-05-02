@@ -1,7 +1,6 @@
 import {inject} from 'aurelia-framework';
 import breeze from 'breeze';
 import saveQueuing from 'breeze-client-labs/breeze.savequeuing';
-import {HttpClient} from 'aurelia-http-client';
 import {LogManager} from 'aurelia-framework';
 import {Configuration} from './configuration';
 
@@ -11,9 +10,6 @@ var logger = LogManager.getLogger('DataService');
 export class DataService {
    constructor(configuration) {
       var serviceName = configuration.gomofotoServiceEndpoint;
-
-      this.httpClient = new HttpClient();
-      this.httpClient.configure(builder => builder.withBaseUri(serviceName));
 
       this.manager = new breeze.EntityManager(serviceName);
       this.manager.enableSaveQueuing(true);

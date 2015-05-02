@@ -27,7 +27,7 @@
                   </li>
                   <li class="dropdown" if.bind="usernav.isSignedIn">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        ${usernav.name}
+                        ${usernav.displayName}
                         <b class="caret"></b>
                      </a>
                      <ul class="dropdown-menu">
@@ -43,7 +43,7 @@
                                  <div class="col-md-7">
                                     <span>${usernav.fullName}</span>
                                     <p class="text-muted small">
-                                       ${user.email}</p>
+                                       ${usernav.email}</p>
                                     <div class="divider">
                                     </div>
                                     <a href="#" class="btn btn-primary btn-sm active">View Profile</a>

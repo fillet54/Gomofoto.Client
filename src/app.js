@@ -1,29 +1,28 @@
 import {inject} from 'aurelia-framework';
-import {Router, Redirect} from 'aurelia-router';
 import 'bootstrap';
 import 'bootstrap/css/bootstrap.css!';
 import {LogManager} from 'aurelia-framework';
 import {Session} from './session';
 import {UserNav} from './user-nav';
+import {Redirect} from 'aurelia-router';
 
-LogManager.setLevel(LogManager.levels.debug);
-
-@inject(Router, UserNav)
+@inject(UserNav)
 export class App {
-  constructor(router, usernav) {
+  constructor(usernav) {
     this.usernav = usernav;
-    this.router = router;
-    this.router.configure(config => {
-      config.title = 'Aurelia';
-      config.addPipelineStep('authorize', AuthorizeStep);
-      config.map([
-        { route: ['','welcome'],  moduleId: './welcome',      nav: true, title:'Welcome' },
-        { route: 'flickr',        moduleId: './flickr',       nav: true },
-        { route: 'gomofoto',      moduleId: './gomofoto',     nav: true, auth: true},
-        { route: 'child-router',  moduleId: './child-router', nav: true, title:'Child Router' },
-        { route: 'login',         moduleId: './login',        nav: false }
-      ]);
-    });
+  }
+  
+  configureRouter(config, router) {
+     config.title = 'Aurelia';
+     config.addPipelineStep('authorize', AuthorizeStep);
+     config.map([
+           { route: ['','welcome'],  moduleId: './welcome',      nav: true, title:'Welcome' },
+           { route: 'flickr',        moduleId: './flickr',       nav: true },
+           { route: 'gomofoto',      moduleId: './gomofoto',     nav: true, auth: true},
+           { route: 'child-router',  moduleId: './child-router', nav: true, title:'Child Router' },
+           { route: 'login',         moduleId: './login',        nav: false }
+           ]);
+     this.router = router;
   }
 }
 
@@ -43,8 +42,7 @@ class AuthorizeStep {
       var isLoggedIn = this.session.isLoggedIn;
       if (!isLoggedIn) {
         logger.info("Redirecting to login");
-        var myred = new Redirect('login');
-        return next.cancel(new Redirect('login'));
+        return next.cancel(new Redirect('/login'));
       }
     }
     return next();

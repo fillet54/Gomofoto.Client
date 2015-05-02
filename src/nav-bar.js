@@ -1,6 +1,6 @@
 import {bindable} from 'aurelia-framework';
 
 export class NavBar {
-  @bindable router = null;
-  @bindable usernav = null;
+  @bindable router;
+  @bindable usernav;
 }
