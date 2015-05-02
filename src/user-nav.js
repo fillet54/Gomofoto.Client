@@ -13,7 +13,7 @@ export class UserNav {
    }
 
    get isSignedIn() {
-      return this.session ? this.session.isLoggedIn : false;
+      return this.session.isLoggedIn;
    }
 
    get displayName() {
@@ -33,7 +33,6 @@ export class UserNav {
    }
 
    logout() {
-      this.session.user = null;
-      router.navigate(''); 
+      return this.router.navigate('/logout'); 
    }
 }

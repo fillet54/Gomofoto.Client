@@ -20,7 +20,8 @@ export class App {
            { route: 'flickr',        moduleId: './flickr',       nav: true },
            { route: 'gomofoto',      moduleId: './gomofoto',     nav: true, auth: true},
            { route: 'child-router',  moduleId: './child-router', nav: true, title:'Child Router' },
-           { route: 'login',         moduleId: './login',        nav: false }
+           { route: 'login',         moduleId: './auth/login',        nav: false },
+           { route: 'logout',         moduleId: './auth/logout',        nav: false }
            ]);
      this.router = router;
   }

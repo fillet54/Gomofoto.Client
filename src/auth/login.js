@@ -1,8 +1,8 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {LogManager} from 'aurelia-framework';
-import {Session} from './session';
-import {DataService} from './dataservice';
+import {Session} from '../session';
+import {DataService} from '../dataservice';
 
 var logger = LogManager.getLogger('Login');
 
@@ -29,7 +29,7 @@ export class Login {
       return this.dataservice.getUserByUsername(this.username).then(users => {
          if (users.results.length !== 0) {
             this.errorMessage = '';
-            this.session.user = users.results[0];
+            this.session.initSession(users.results[0]);
             return this.router.navigate('gomofoto');
          }
          else {
