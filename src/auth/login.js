@@ -33,7 +33,7 @@ export class Login {
             this.session.initSession(user);
             logger.info("Log in successful");
             logger.info("Redirecting to profile");
-            return this.router.navigateToRoute('profile', {username: user.Username});
+            return this.router.navigateToRoute('profile', {username: user.username});
          }
          else {
             this.errorMessage = "Invalid username and/or password";

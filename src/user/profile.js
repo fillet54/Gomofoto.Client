@@ -16,8 +16,7 @@ export class Profile {
    canActivate(params) {
       return this.dataservice.getUserByUsername(params.username).then(users => {
          if (users.results.length !== 0) {
-            this.user =  new User(users.results[0]);
-            this.userModel = users.results[0];
+            this.user =  users.results[0];
             return true;
          }
          else {
@@ -36,7 +35,7 @@ export class Profile {
    }
 
    get isCurrentUser() {
-      return this.session.user.Id == this.user.id;
+      return this.session.user.id == this.user.id;
    } 
 }
 

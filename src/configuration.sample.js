@@ -1,5 +1,2 @@
-export class Configuration {
-  constructor() {
-     this.gomofotoServiceEndpoint = "http://sample.com/breeze/breeze";
-  } 
-}
+export const gomofotoServiceEndpoint = "http://sample.com/breeze/breeze";
+

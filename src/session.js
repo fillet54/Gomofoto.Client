@@ -4,11 +4,11 @@ import {LogManager} from 'aurelia-framework';
 var log = LogManager.getLogger('session');
 
 var GUEST_USER = {
-   Id: -1,
-   FirstName: '',
-   LastName: '',
-   EmailAddress: '',
-   Username: '', 
+   id: -1,
+   firstName: '',
+   lastName: '',
+   emailAddress: '',
+   username: '', 
    isGuest: true 
 };
 

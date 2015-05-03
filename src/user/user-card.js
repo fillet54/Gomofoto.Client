@@ -1,16 +1,5 @@
-import {bindable, inject} from 'aurelia-framework';
-import {Session} from '../session';
-import {User} from './user';
+import {bindable} from 'aurelia-framework';
 
-@inject(Session)
 export class UserCard {
-   @bindable userModel; 
-
-   constructor(session) {
-      this._session = session;
-   } 
-
-   get user() {
-      return new User(this.userModel);
-   }
+   @bindable user; 
 }

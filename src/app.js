@@ -21,7 +21,7 @@ export class App {
            { route: 'child-router',      moduleId: './child-router', nav: true, title:'Child Router' },
            { route: 'login',             moduleId: './auth/login',   nav: false },
            { route: 'logout',            moduleId: './auth/logout',  nav: false },
-           { name: 'profile', route: '/:username', moduleId: './user/profile', nav: false },
+           { name: 'profile', route: 'user/:username', moduleId: './user/profile', nav: false },
            { route: 'error/404', moduleId: './error/error_404', nav: false }
 
            ]);

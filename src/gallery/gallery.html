@@ -2,7 +2,7 @@
   <section>
       <h2>Albums</h2>
       <div class="row">
-        <div class="col-sm-6 col-md-3" repeat.for="album of albums">
+        <div class="col-sm-6 col-md-3" repeat.for="album of user.albums">
           <a class="thumbnail">
             <img style="width: 260px; height: 180px;" src.bind="album.getThumbnailUrl(260,180)"/>
           </a>

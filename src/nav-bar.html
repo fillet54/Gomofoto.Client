@@ -40,7 +40,7 @@
                            <div class="navbar-content">
                               <div class="row">
                                  <div class="col-md-5">
-                                    <img src.bind="user.getAvatarUrl(120)"
+                                    <img src.bind="user.getAvatarUrl(120, 120)"
                                     alt="Alternate Text" class="img-responsive"/>
                                     <p class="text-center small">
                                        <a href="#">Change Photo</a></p>
@@ -48,7 +48,7 @@
                                  <div class="col-md-7">
                                     <span>${user.fullName}</span>
                                     <p class="text-muted small">
-                                       ${user.email}</p>
+                                       ${user.emailAddress}</p>
                                     <div class="divider">
                                     </div>
                                     <a route-href="route: profile; params.bind: {username:user.username}" 
