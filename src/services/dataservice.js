@@ -49,8 +49,8 @@ export class DataService {
       return this.manager.executeQuery(query);
    } 
 
-   getAlbumsForUserById(id) {
-     logger.info('Getting all albums for user with id ${id}');
+   getAlbumsForUser(id) {
+     logger.info('Getting all albums for user ${username}');
      var query = breeze.EntityQuery
                  .from("Albums")
                  .where("UserId", "equals", id);

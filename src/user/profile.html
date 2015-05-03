@@ -2,14 +2,19 @@
 
 <template>
    <require from='./user-card'></require>
+   <require from='../gallery/gallery'></require>
 
    <div class="container">
       <div class="user-profile">
-         <div class="sidebar">
             <div class="col-md-2">
+               <div class="sidebar">
                <user-card user-model.bind="userModel" ></user-card>
             </div>
          </div>
+         <div class="col-md-10">
+            <gallery user-model.bind="userModel"></gallery>
+         </div>
+
       </div>
    </div>
 </template>
