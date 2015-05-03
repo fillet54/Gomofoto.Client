@@ -1,27 +1,29 @@
-import {inject} from 'aurelia-framework';
+import {inject, LogManager} from 'aurelia-framework';
 import 'bootstrap';
 import 'bootstrap/css/bootstrap.css!';
-import {LogManager} from 'aurelia-framework';
 import {Session} from './session';
 import {UserNav} from './user-nav';
 import {Redirect} from 'aurelia-router';
 
-@inject(UserNav)
+@inject(Session)
 export class App {
-  constructor(usernav) {
-    this.usernav = usernav;
+  constructor(session) {
+    this.session = session;
   }
   
   configureRouter(config, router) {
      config.title = 'Aurelia';
      config.addPipelineStep('authorize', AuthorizeStep);
      config.map([
-           { route: ['','welcome'],  moduleId: './welcome',      nav: true, title:'Welcome' },
-           { route: 'flickr',        moduleId: './flickr',       nav: true },
-           { route: 'gomofoto',      moduleId: './gomofoto',     nav: true, auth: true},
-           { route: 'child-router',  moduleId: './child-router', nav: true, title:'Child Router' },
-           { route: 'login',         moduleId: './auth/login',        nav: false },
-           { route: 'logout',         moduleId: './auth/logout',        nav: false }
+           { name: 'welcome', route: ['','welcome'],      moduleId: './welcome',      nav: true, title:'Welcome' },
+           { route: 'flickr',            moduleId: './flickr',       nav: true },
+           { route: 'gomofoto',          moduleId: './gomofoto',     nav: true, auth: true},
+           { route: 'child-router',      moduleId: './child-router', nav: true, title:'Child Router' },
+           { route: 'login',             moduleId: './auth/login',   nav: false },
+           { route: 'logout',            moduleId: './auth/logout',  nav: false },
+           { name: 'profile', route: '/user/:id/profile', moduleId: './user/profile', nav: false },
+           { route: 'error/404', moduleId: './error/error_404', nav: false }
+
            ]);
      this.router = router;
   }

@@ -1,8 +1,7 @@
-import {inject} from 'aurelia-framework';
+import {inject, LogManager} from 'aurelia-framework';
 import breeze from 'breeze';
 import saveQueuing from 'breeze-client-labs/breeze.savequeuing';
-import {LogManager} from 'aurelia-framework';
-import {Configuration} from './configuration';
+import {Configuration} from '../configuration';
 
 var logger = LogManager.getLogger('DataService');
 
@@ -14,6 +13,24 @@ export class DataService {
       this.manager = new breeze.EntityManager(serviceName);
       this.manager.enableSaveQueuing(true);
    }
+
+   getUserById(id) {
+      logger.info(`Getting user for id ${id}`);
+      var query = breeze.EntityQuery
+         .from("Users")
+         .where("Id", "equals", id);
+      return this.manager.executeQuery(query);
+   }
+
+   getUserByIdWithAlbums(id) {
+      logger.info(`Getting user for id ${id}`);
+      var query = breeze.EntityQuery
+         .from("Users")
+         .where("Id", "equals", id)
+         .expand('Albums');
+      return this.manager.executeQuery(query);
+   }
+
 
    getUserByUsername(username) {
       logger.info("Getting user " + username + ".");
@@ -32,14 +49,12 @@ export class DataService {
       return this.manager.executeQuery(query);
    } 
 
-   getAlbumsForUser(user) {
-     logger.info("Getting all albums for " + user.FirstName + " " + user.LastName + ".");
+   getAlbumsForUserById(id) {
+     logger.info('Getting all albums for user with id ${id}');
      var query = breeze.EntityQuery
                  .from("Albums")
-                 .where("UserId", "equals", user.Id);
-      var albums = this.manager.executeQuery(query);
-      logger.info("Found " + albums.length + " albums.");
-      return albums;
+                 .where("UserId", "equals", id);
+      return this.manager.executeQuery(query);
    }
    
    getPhotosForAlbum(album) {

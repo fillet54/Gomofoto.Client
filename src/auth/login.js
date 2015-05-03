@@ -2,7 +2,7 @@ import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {LogManager} from 'aurelia-framework';
 import {Session} from '../session';
-import {DataService} from '../dataservice';
+import {DataService} from '../services/dataservice';
 
 var logger = LogManager.getLogger('Login');
 
@@ -29,8 +29,11 @@ export class Login {
       return this.dataservice.getUserByUsername(this.username).then(users => {
          if (users.results.length !== 0) {
             this.errorMessage = '';
-            this.session.initSession(users.results[0]);
-            return this.router.navigate('gomofoto');
+            var user = users.results[0];
+            this.session.initSession(user);
+            logger.info("Log in successful");
+            logger.info("Redirecting to profile");
+            return this.router.navigateToRoute('profile', {id: user.Id});
          }
          else {
             this.errorMessage = "Invalid username and/or password";
