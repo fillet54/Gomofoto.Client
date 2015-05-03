@@ -1,0 +1,15 @@
+.user-card-names {
+   margin-top: 5px;
+}
+
+.user-card-fullname {
+   font-size: 20px;
+   line-height: 25px;
+   display: block;
+}
+
+.user-card-username {
+   font-weight: 300;
+   color: #666;
+}
+

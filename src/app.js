@@ -12,7 +12,7 @@ export class App {
   }
   
   configureRouter(config, router) {
-     config.title = 'Aurelia';
+     config.title = 'Gomofoto';
      config.addPipelineStep('authorize', AuthorizeStep);
      config.map([
            { name: 'welcome', route: ['','welcome'],      moduleId: './welcome',      nav: true, title:'Welcome' },
@@ -21,7 +21,7 @@ export class App {
            { route: 'child-router',      moduleId: './child-router', nav: true, title:'Child Router' },
            { route: 'login',             moduleId: './auth/login',   nav: false },
            { route: 'logout',            moduleId: './auth/logout',  nav: false },
-           { name: 'profile', route: '/user/:id/profile', moduleId: './user/profile', nav: false },
+           { name: 'profile', route: '/:username', moduleId: './user/profile', nav: false },
            { route: 'error/404', moduleId: './error/error_404', nav: false }
 
            ]);
@@ -42,8 +42,8 @@ class AuthorizeStep {
     // this includes child routes.
     if (routingContext.nextInstructions.some(i => i.config.auth)) {
       logger.info("Authorizing user");
-      var isLoggedIn = this.session.isLoggedIn;
-      if (!isLoggedIn) {
+      var isSignedIn = this.session.isSignedIn;
+      if (!isSignedIn) {
         logger.info("Redirecting to login");
         return next.cancel(new Redirect('/login'));
       }

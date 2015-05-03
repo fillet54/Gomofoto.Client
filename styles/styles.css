@@ -45,10 +45,6 @@ section {
     max-width: 425px;
 }
 
-.login-wrapper {
-   margin-top: 20px;
-}
-
 /* UserNav */
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {

@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="/styles/nav-bar.css">
+
 <template>
    <div class="navbar-wrapper">
       <div class="container">
@@ -23,7 +25,9 @@
                </ul>
                <ul class="nav navbar-nav navbar-right" >
                   <li if.bind="!isSignedIn">
-                     <a route-href="route: login">Log In <i class="fa fa-sign-in"></i></a>
+                     <p class="navbar-btn">
+                        <a class="btn btn-default" route-href="route: login">Sign In</a>
+                     </p>
                   </li>
                   <li class="dropdown" if.bind="isSignedIn">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -47,7 +51,7 @@
                                        ${user.email}</p>
                                     <div class="divider">
                                     </div>
-                                    <a route-href="route: profile; params.bind: {id:user.id}" 
+                                    <a route-href="route: profile; params.bind: {username:user.username}" 
                                        class="btn btn-primary btn-sm active">View Profile</a>
                                  </div>
                               </div>

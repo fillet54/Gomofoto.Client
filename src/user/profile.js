@@ -1,8 +1,8 @@
 import {inject, LogManager} from 'aurelia-framework';
 import {Redirect} from 'aurelia-router';
-import {Session} from '../session';
 import {DataService} from '../services/dataservice';
 import {User} from './user';
+import {Session} from '../Session';
 
 var log = LogManager.getLogger('profile');
 
@@ -14,18 +14,19 @@ export class Profile {
    }
   
    canActivate(params) {
-      return this.dataservice.getUserByIdWithAlbums(params.id).then(users => {
+      return this.dataservice.getUserByUsername(params.username).then(users => {
          if (users.results.length !== 0) {
             this.user =  new User(users.results[0]);
+            this.userModel = users.results[0];
             return true;
          }
          else {
-            log.info(`User with id ${params.id} does not exists.`);
+            log.info(`User "${params.username}" does not exist`);
             return new Redirect('/error/404');
          }
       },
       error => {
-         log.error(`Error while looking up user`)
+         log.error(`Error while looking up ${params.username}`)
          return new Redirect('/error/404');
       });
    }

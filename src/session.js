@@ -22,6 +22,10 @@ export class Session {
       return this.user !== GUEST_USER;
    }
 
+   get isCurrentUser(user) {
+      return this.user === user;
+   }
+
    initSession(user) {
       log.info(`Initilizing session for ${user.Username}`); 
       this.user = user;

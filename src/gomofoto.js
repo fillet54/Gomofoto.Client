@@ -1,6 +1,6 @@
 import {bindable} from 'aurelia-framework';
 import {inject} from 'aurelia-framework'; 
-import {DataService} from './dataservice';
+import {DataService} from './services/dataservice';
 import {LogManager} from 'aurelia-framework';
 
 var logger = LogManager.getLogger('Gomofoto');
